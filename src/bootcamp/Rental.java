@@ -12,14 +12,11 @@ public class Rental {
 	}
 
     public double fee() {
-        double thisAmount = 0;
-        thisAmount = movie.price(daysRented);
-        return thisAmount;
+        return movie.price(daysRented);
     }
 
     public Integer renterPoint() {
-        Integer frequentRenterPoints = movie.renterPoint(daysRented);
-        return frequentRenterPoints + BASE_POINTS;
+        return movie.renterPoint(daysRented) + BASE_POINTS;
     }
 
     public String presentationStatement() {

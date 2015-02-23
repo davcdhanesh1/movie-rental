@@ -1,55 +1,24 @@
 package bootcamp;
 public class Movie {
 
-	public static final int CHILDRENS = 2;
-	public static final int REGULAR = 0;
-	public static final int NEW_RELEASE = 1;
-
     @Override
     public String toString() {
         return title;
     }
 
     private final String title;
-	private int priceCode;
+    private MovieType movieType;
 
-	public Movie(final String title, final int priceCode) {
+	public Movie(final String title, final MovieType movieType) {
 		this.title = title;
-		this.priceCode = priceCode;
-	}
-
-	public void setPriceCode(final int priceCode) {
-		this.priceCode = priceCode;
-	}
+        this.movieType = movieType;
+    }
 
     public double price(Integer daysRented) {
-        double thisAmount = 0;
-        switch (priceCode) {
-            case Movie.REGULAR:
-                thisAmount += 2;
-                if (daysRented > 2) {
-                    thisAmount += (daysRented - 2) * 1.5;
-                }
-                break;
-            case Movie.NEW_RELEASE:
-                thisAmount += daysRented * 3;
-                break;
-            case Movie.CHILDRENS:
-                thisAmount += 1.5;
-                if (daysRented > 3) {
-                    thisAmount += (daysRented - 3) * 1.5;
-                }
-                break;
-        }
-        return thisAmount;
+        return movieType.price(daysRented);
     }
 
     public Integer renterPoint(int daysRented) {
-        Integer frequentRenterPoints = 0;
-        if (priceCode == Movie.NEW_RELEASE
-                && daysRented > 1) {
-            frequentRenterPoints++;
-        }
-        return frequentRenterPoints;
+        return movieType.renterPoint(daysRented);
     }
 }

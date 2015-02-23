@@ -5,10 +5,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import bootcamp.Customer;
-import bootcamp.Movie;
-import bootcamp.Rental;
-
 public class CustomerTest {
 
 	private static final int ONE_DAY = 1;
@@ -17,11 +13,9 @@ public class CustomerTest {
 	private static final int FOUR_DAYS = 4;
 
 	private Customer customer;
-	private final Movie regular = new Movie("A New Hope", Movie.REGULAR);
-	private final Movie childrens = new Movie("A Phantom Menace",
-			Movie.CHILDRENS);
-	private final Movie newRelease = new Movie("Revenge of the Sith",
-			Movie.NEW_RELEASE);
+	private final Movie regular = new Movie("A New Hope", new RegularMovie());
+	private final Movie childrens = new Movie("A Phantom Menace", new ChildrenMovie());
+	private final Movie newRelease = new Movie("Revenge of the Sith", new NewReleaseMovie());
 
 	@Before
 	public void setUp() {

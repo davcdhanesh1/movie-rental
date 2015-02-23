@@ -4,7 +4,7 @@ import bootcamp.Rental;
 
 import java.util.List;
 
-public class PaperPresenter extends Presenter {
+public class PlainTextPresenter extends Presenter {
 
     @Override
     public String getStatement(String name, List<Rental> rentals) {

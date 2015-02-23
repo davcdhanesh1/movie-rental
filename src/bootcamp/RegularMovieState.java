@@ -1,11 +1,6 @@
 package bootcamp;
 
-public class RegularMovieState implements MovieState {
-    @Override
-    public Integer renterPoint(int daysRented) {
-        return 0;
-    }
-
+public class RegularMovieState extends MovieState {
     @Override
     public double price(Integer daysRented) {
         double thisAmount = 2;

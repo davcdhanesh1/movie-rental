@@ -1,7 +1,9 @@
 package bootcamp;
 
-public interface MovieState {
-    double price(Integer daysRented);
+public abstract class MovieState {
+    public abstract double price(Integer daysRented);
 
-    Integer renterPoint(int daysRented);
+    public Integer renterPoint(int daysRented) {
+        return 0;
+    }
 }

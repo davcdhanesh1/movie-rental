@@ -1,10 +1,6 @@
 package bootcamp;
 
-public class ChildrenMovieState implements MovieState {
-    @Override
-    public Integer renterPoint(int daysRented) {
-        return 0;
-    }
+public class ChildrenMovieState extends MovieState {
 
     @Override
     public double price(Integer daysRented) {

@@ -4,7 +4,7 @@ import bootcamp.Rental;
 
 import java.util.List;
 
-public class PaperPresenter implements Presenter {
+public class PaperPresenter extends Presenter {
 
     @Override
     public String getStatement(String name, List<Rental> rentals) {
@@ -20,19 +20,4 @@ public class PaperPresenter implements Presenter {
         return result;
     }
 
-    private Integer totalFrequentRenterPoints(List<Rental> rentals) {
-        int frequentRenterPoints = 0;
-        for (final Rental rental: rentals) {
-            frequentRenterPoints += rental.renterPoint();
-        }
-        return frequentRenterPoints;
-    }
-
-    private double totalAmount(List<Rental> rentals) {
-        double totalAmount = 0;
-        for (final Rental rental: rentals) {
-            totalAmount += rental.fee();
-        }
-        return totalAmount;
-    }
 }

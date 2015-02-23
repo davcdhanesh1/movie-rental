@@ -1,6 +1,5 @@
 package bootcamp;
 
-import bootcamp.Presenter.PaperPresenter;
 import bootcamp.Presenter.Presenter;
 
 import java.util.ArrayList;

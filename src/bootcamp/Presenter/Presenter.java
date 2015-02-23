@@ -4,7 +4,23 @@ import bootcamp.Rental;
 
 import java.util.List;
 
-public interface Presenter {
+public abstract class Presenter {
 
-    String getStatement(String name, List<Rental> rentals);
+    public abstract String getStatement(String name, List<Rental> rentals);
+
+    protected Integer totalFrequentRenterPoints(List<Rental> rentals) {
+        int frequentRenterPoints = 0;
+        for (final Rental rental: rentals) {
+            frequentRenterPoints += rental.renterPoint();
+        }
+        return frequentRenterPoints;
+    }
+
+    protected double totalAmount(List<Rental> rentals) {
+        double totalAmount = 0;
+        for (final Rental rental: rentals) {
+            totalAmount += rental.fee();
+        }
+        return totalAmount;
+    }
 }

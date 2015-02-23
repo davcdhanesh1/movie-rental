@@ -2,6 +2,7 @@ package bootcamp;
 
 import static org.junit.Assert.assertEquals;
 
+import bootcamp.Presenter.HtmlPresenter;
 import bootcamp.Presenter.PaperPresenter;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,7 +36,21 @@ public class CustomerTest {
 		assertEquals(expectedStatement.toString(), customer.statement(new PaperPresenter()));
     }
 
-	@Test
+    @Test
+    public void testHtmlStatementOneRegular() throws Exception {
+        addRentalOfMovie(regular, TWO_DAYS);
+
+        final StringBuffer expectedStatement = new StringBuffer();
+        expectedStatement.append("<html><body>");
+        expectedStatement.append("<h2>Rental Record for nhpatt\n</h2>");
+        expectedStatement.append("<p>\tA New Hope\t2.0\n</p>");
+        expectedStatement.append("<b>Amount owed is 2.0\n</b>");
+        expectedStatement.append("<h2>You earned 1 frequent renter points</h2>");
+        expectedStatement.append("</body></html>");
+        assertEquals(expectedStatement.toString(), customer.statement(new HtmlPresenter()));
+    }
+
+    @Test
 	public void testPaperStatementOneRegularMoreThanTwoDays() {
 		addRentalOfMovie(regular, THREE_DAYS);
 

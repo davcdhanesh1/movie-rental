@@ -2,7 +2,7 @@ package bootcamp;
 
 public class Rental {
 
-    private static final Integer BASE_POINTS = 1;
+    private static final Integer BASE_POINTS_RENTAL_POINTS = 1;
     private final Movie movie;
 	private final int daysRented;
 
@@ -16,7 +16,7 @@ public class Rental {
     }
 
     public Integer renterPoint() {
-        return movie.renterPoint(daysRented) + BASE_POINTS;
+        return movie.renterPoint(daysRented) + BASE_POINTS_RENTAL_POINTS;
     }
 
     public String presentationStatement() {

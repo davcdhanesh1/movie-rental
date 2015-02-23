@@ -16,8 +16,8 @@ public class HtmlPresenter extends Presenter {
 
         result += "<b>" + "Amount owed is " + String.valueOf(totalAmount(rentals)) + "\n" + "</b>";
         result += "<h2>" + "You earned " + String.valueOf(totalFrequentRenterPoints(rentals)) + " frequent renter points" + "</h2>";
-
         result += "</body></html>";
+
         return result;
     }
 }

@@ -33,7 +33,7 @@ public class CustomerTest {
 		expectedStatement.append("\tA New Hope\t2.0\n");
 		expectedStatement.append("Amount owed is 2.0\n");
 		expectedStatement.append("You earned 1 frequent renter points");
-		assertEquals(expectedStatement.toString(), customer.statement(new PaperPresenter()));
+		assertEquals(expectedStatement.toString(), customer.createStatement(new PaperPresenter()));
     }
 
     @Test
@@ -47,7 +47,7 @@ public class CustomerTest {
         expectedStatement.append("<b>Amount owed is 2.0\n</b>");
         expectedStatement.append("<h2>You earned 1 frequent renter points</h2>");
         expectedStatement.append("</body></html>");
-        assertEquals(expectedStatement.toString(), customer.statement(new HtmlPresenter()));
+        assertEquals(expectedStatement.toString(), customer.createStatement(new HtmlPresenter()));
     }
 
     @Test
@@ -59,7 +59,7 @@ public class CustomerTest {
 		expectedStatement.append("\tA New Hope\t3.5\n");
 		expectedStatement.append("Amount owed is 3.5\n");
 		expectedStatement.append("You earned 1 frequent renter points");
-		assertEquals(expectedStatement.toString(), customer.statement(new PaperPresenter()));
+		assertEquals(expectedStatement.toString(), customer.createStatement(new PaperPresenter()));
 	}
 
 	@Test
@@ -71,7 +71,7 @@ public class CustomerTest {
 		expectedStatement.append("\tA Phantom Menace\t1.5\n");
 		expectedStatement.append("Amount owed is 1.5\n");
 		expectedStatement.append("You earned 1 frequent renter points");
-		assertEquals(expectedStatement.toString(), customer.statement(new PaperPresenter()));
+		assertEquals(expectedStatement.toString(), customer.createStatement(new PaperPresenter()));
 	}
 
 	@Test
@@ -83,7 +83,7 @@ public class CustomerTest {
 		expectedStatement.append("\tA Phantom Menace\t3.0\n");
 		expectedStatement.append("Amount owed is 3.0\n");
 		expectedStatement.append("You earned 1 frequent renter points");
-		assertEquals(expectedStatement.toString(), customer.statement(new PaperPresenter()));
+		assertEquals(expectedStatement.toString(), customer.createStatement(new PaperPresenter()));
 	}
 
     @Test
@@ -96,7 +96,7 @@ public class CustomerTest {
         expectedStatementForNewRelease.append("\tBirdman\t6.0\n");
         expectedStatementForNewRelease.append("Amount owed is 6.0\n");
         expectedStatementForNewRelease.append("You earned 2 frequent renter points");
-        assertEquals(expectedStatementForNewRelease.toString(), customer.statement(new PaperPresenter()));
+        assertEquals(expectedStatementForNewRelease.toString(), customer.createStatement(new PaperPresenter()));
 
         newReleaseMovie.changeStateToRegularMovie();
         final StringBuffer expectedStatementForRegularState = new StringBuffer();
@@ -104,7 +104,7 @@ public class CustomerTest {
         expectedStatementForRegularState.append("\tBirdman\t2.0\n");
         expectedStatementForRegularState.append("Amount owed is 2.0\n");
         expectedStatementForRegularState.append("You earned 1 frequent renter points");
-        assertEquals(expectedStatementForRegularState.toString(), customer.statement(new PaperPresenter()));
+        assertEquals(expectedStatementForRegularState.toString(), customer.createStatement(new PaperPresenter()));
     }
 
     @Test
@@ -116,14 +116,14 @@ public class CustomerTest {
 		expectedStatementForNewRelease.append("\tRevenge of the Sith\t6.0\n");
 		expectedStatementForNewRelease.append("Amount owed is 6.0\n");
 		expectedStatementForNewRelease.append("You earned 2 frequent renter points");
-		assertEquals(expectedStatementForNewRelease.toString(), customer.statement(new PaperPresenter()));
+		assertEquals(expectedStatementForNewRelease.toString(), customer.createStatement(new PaperPresenter()));
 	}
 
 	@Test
 	public void testPaperStatementNoRentals() {
 		assertEquals(
 				"Rental Record for nhpatt\nAmount owed is 0.0\nYou earned 0 frequent renter points",
-				customer.statement(new PaperPresenter()));
+				customer.createStatement(new PaperPresenter()));
 	}
 
 	@Test
@@ -141,7 +141,7 @@ public class CustomerTest {
 		expectedStatement.append("\tA New Hope\t2.0\n");
 		expectedStatement.append("Amount owed is 11.5\n");
 		expectedStatement.append("You earned 5 frequent renter points");
-		assertEquals(expectedStatement.toString(), customer.statement(new PaperPresenter()));
+		assertEquals(expectedStatement.toString(), customer.createStatement(new PaperPresenter()));
 	}
 
 	private void addRentalOfMovie(final Movie movie, final int daysRented) {

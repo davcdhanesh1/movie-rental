@@ -18,7 +18,7 @@ public class Customer {
 		rentals.add(arg);
 	}
 
-	public String statement(Presenter presenter) {
+	public String createStatement(Presenter presenter) {
         return presenter.getStatement(name, rentals);
     }
 }

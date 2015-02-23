@@ -16,11 +16,6 @@ public class Rental {
         return thisAmount;
     }
 
-    @Override
-    public String toString() {
-        return "\t" + movie + "\t" + String.valueOf(fee()) + "\n";
-    }
-
     public Integer renterPoint() {
         Integer frequentRenterPoints = 1;
         if (movie.getPriceCode() == Movie.NEW_RELEASE
@@ -28,5 +23,9 @@ public class Rental {
             frequentRenterPoints++;
         }
         return frequentRenterPoints;
+    }
+
+    public String presentationStatement() {
+        return "\t" + movie + "\t" + String.valueOf(fee()) + "\n";
     }
 }

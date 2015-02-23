@@ -28,7 +28,7 @@ public class Customer {
         for (final Rental rental : rentals) {
             totalAmount += rental.fee();
             frequentRenterPoints += rental.renterPoint();
-            result += rental;
+            result += rental.presentationStatement();
 		}
 		// add footer lines
 		result += "Amount owed is " + String.valueOf(totalAmount) + "\n";

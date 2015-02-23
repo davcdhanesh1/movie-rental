@@ -13,9 +13,9 @@ public class CustomerTest {
 	private static final int FOUR_DAYS = 4;
 
 	private Customer customer;
-	private final Movie regular = new Movie("A New Hope", new RegularMovie());
-	private final Movie childrens = new Movie("A Phantom Menace", new ChildrenMovie());
-	private final Movie newRelease = new Movie("Revenge of the Sith", new NewReleaseMovie());
+	private final Movie regular = new Movie("A New Hope", new RegularMovieType());
+	private final Movie children = new Movie("A Phantom Menace", new ChildrenMovieType());
+	private final Movie newRelease = new Movie("Revenge of the Sith", new NewReleaseMovieType());
 
 	@Before
 	public void setUp() {
@@ -48,7 +48,7 @@ public class CustomerTest {
 
 	@Test
 	public void testStatementOneForChildren() {
-		addRentalOfMovie(childrens, TWO_DAYS);
+		addRentalOfMovie(children, TWO_DAYS);
 
 		final StringBuffer expectedStatement = new StringBuffer();
 		expectedStatement.append("Rental Record for nhpatt\n");
@@ -60,7 +60,7 @@ public class CustomerTest {
 
 	@Test
 	public void testStatementOneForChildrenMoreThanThreeDays() {
-		addRentalOfMovie(childrens, FOUR_DAYS);
+		addRentalOfMovie(children, FOUR_DAYS);
 
 		final StringBuffer expectedStatement = new StringBuffer();
 		expectedStatement.append("Rental Record for nhpatt\n");
@@ -93,7 +93,7 @@ public class CustomerTest {
 	public void testStatementFourRentals() {
 		addRentalOfMovie(regular, TWO_DAYS);
 		addRentalOfMovie(newRelease, TWO_DAYS);
-		addRentalOfMovie(childrens, THREE_DAYS);
+		addRentalOfMovie(children, THREE_DAYS);
 		addRentalOfMovie(regular, ONE_DAY);
 
 		final StringBuffer expectedStatement = new StringBuffer();

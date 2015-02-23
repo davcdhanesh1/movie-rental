@@ -1,6 +1,6 @@
 package bootcamp;
 
-public class NewReleaseMovie implements MovieType {
+public class NewReleaseMovieType implements MovieType {
     @Override
     public Integer renterPoint(int daysRented) {
         Integer frequentRenterPoints = 0;

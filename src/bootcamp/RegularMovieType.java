@@ -1,6 +1,6 @@
 package bootcamp;
 
-public class ChildrenMovie implements MovieType {
+public class RegularMovieType implements MovieType {
     @Override
     public Integer renterPoint(int daysRented) {
         return 0;
@@ -8,9 +8,9 @@ public class ChildrenMovie implements MovieType {
 
     @Override
     public double price(Integer daysRented) {
-        double thisAmount = 1.5;
-        if (daysRented > 3) {
-            thisAmount += (daysRented - 3) * 1.5;
+        double thisAmount = 2;
+        if (daysRented > 2) {
+            thisAmount += (daysRented - 2) * 1.5;
         }
         return thisAmount;
     }

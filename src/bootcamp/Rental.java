@@ -2,7 +2,8 @@ package bootcamp;
 
 public class Rental {
 
-	private final Movie movie;
+    private static final Integer BASE_POINTS = 1;
+    private final Movie movie;
 	private final int daysRented;
 
 	public Rental(final Movie movie, final int daysRented) {
@@ -17,12 +18,8 @@ public class Rental {
     }
 
     public Integer renterPoint() {
-        Integer frequentRenterPoints = 1;
-        if (movie.getPriceCode() == Movie.NEW_RELEASE
-                && daysRented > 1) {
-            frequentRenterPoints++;
-        }
-        return frequentRenterPoints;
+        Integer frequentRenterPoints = movie.renterPoint(daysRented);
+        return frequentRenterPoints + BASE_POINTS;
     }
 
     public String presentationStatement() {

@@ -18,10 +18,6 @@ public class Movie {
 		this.priceCode = priceCode;
 	}
 
-	public int getPriceCode() {
-		return priceCode;
-	}
-
 	public void setPriceCode(final int priceCode) {
 		this.priceCode = priceCode;
 	}
@@ -46,5 +42,14 @@ public class Movie {
                 break;
         }
         return thisAmount;
+    }
+
+    public Integer renterPoint(int daysRented) {
+        Integer frequentRenterPoints = 0;
+        if (priceCode == Movie.NEW_RELEASE
+                && daysRented > 1) {
+            frequentRenterPoints++;
+        }
+        return frequentRenterPoints;
     }
 }

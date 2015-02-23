@@ -19,23 +19,11 @@ public class Movie {
     }
 
     public Integer renterPoint(int daysRented) {
-        return currentState().renterPoint(daysRented);
-    }
-
-    private MovieState currentState() {
-        return movieState;
-    }
-
-    public void setState(MovieState state) {
-        this.movieState = state;
+        return movieState.renterPoint(daysRented);
     }
 
     public static Movie createNewReleaseMovie(String movieName) {
         return new Movie(movieName,new NewReleaseMovieState());
-    }
-
-    public void changeStateToRegularMovie() {
-        movieState = new RegularMovieState();
     }
 
     public static Movie createRegularRelease(String movieName) {
@@ -44,5 +32,9 @@ public class Movie {
 
     public static Movie createChildrenMovie(String movieName) {
         return new Movie(movieName, new ChildrenMovieState());
+    }
+
+    public void changeStateToRegularMovie() {
+        movieState = new RegularMovieState();
     }
 }

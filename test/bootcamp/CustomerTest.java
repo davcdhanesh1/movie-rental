@@ -93,12 +93,11 @@ public class CustomerTest {
 
     @Test
 	public void testStatementOneRentalNewRelease() {
-        Movie newReleaseMovie = Movie.createNewReleaseMovie("Birdman");
-		addRentalOfMovie(newReleaseMovie, TWO_DAYS);
+		addRentalOfMovie(newRelease, TWO_DAYS);
 
 		final StringBuffer expectedStatementForNewRelease = new StringBuffer();
 		expectedStatementForNewRelease.append("Rental Record for nhpatt\n");
-		expectedStatementForNewRelease.append("\tBirdman\t6.0\n");
+		expectedStatementForNewRelease.append("\tRevenge of the Sith\t6.0\n");
 		expectedStatementForNewRelease.append("Amount owed is 6.0\n");
 		expectedStatementForNewRelease.append("You earned 2 frequent renter points");
 		assertEquals(expectedStatementForNewRelease.toString(), customer.statement());

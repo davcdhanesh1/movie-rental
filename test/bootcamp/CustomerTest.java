@@ -70,7 +70,28 @@ public class CustomerTest {
 		assertEquals(expectedStatement.toString(), customer.statement());
 	}
 
-	@Test
+    @Test
+    public void testStatementOneRentalNewReleaseChangesItsStateToRegularState() throws Exception {
+        Movie newReleaseMovie = Movie.createNewReleaseMovie("Birdman");
+        addRentalOfMovie(newReleaseMovie, TWO_DAYS);
+
+        final StringBuffer expectedStatementForNewRelease = new StringBuffer();
+        expectedStatementForNewRelease.append("Rental Record for nhpatt\n");
+        expectedStatementForNewRelease.append("\tBirdman\t6.0\n");
+        expectedStatementForNewRelease.append("Amount owed is 6.0\n");
+        expectedStatementForNewRelease.append("You earned 2 frequent renter points");
+        assertEquals(expectedStatementForNewRelease.toString(), customer.statement());
+
+        newReleaseMovie.changeStateToRegularMovie();
+        final StringBuffer expectedStatementForRegularState = new StringBuffer();
+        expectedStatementForRegularState.append("Rental Record for nhpatt\n");
+        expectedStatementForRegularState.append("\tBirdman\t2.0\n");
+        expectedStatementForRegularState.append("Amount owed is 2.0\n");
+        expectedStatementForRegularState.append("You earned 1 frequent renter points");
+        assertEquals(expectedStatementForRegularState.toString(), customer.statement());
+    }
+
+    @Test
 	public void testStatementOneRentalNewRelease() {
         Movie newReleaseMovie = Movie.createNewReleaseMovie("Birdman");
 		addRentalOfMovie(newReleaseMovie, TWO_DAYS);
@@ -81,14 +102,6 @@ public class CustomerTest {
 		expectedStatementForNewRelease.append("Amount owed is 6.0\n");
 		expectedStatementForNewRelease.append("You earned 2 frequent renter points");
 		assertEquals(expectedStatementForNewRelease.toString(), customer.statement());
-
-        newReleaseMovie.changeStateToRegularMovie();
-        final StringBuffer expectedStatementForRegularState = new StringBuffer();
-        expectedStatementForRegularState.append("Rental Record for nhpatt\n");
-        expectedStatementForRegularState.append("\tBirdman\t2.0\n");
-        expectedStatementForRegularState.append("Amount owed is 2.0\n");
-        expectedStatementForRegularState.append("You earned 1 frequent renter points");
-        assertEquals(expectedStatementForRegularState.toString(), customer.statement());
 	}
 
 	@Test

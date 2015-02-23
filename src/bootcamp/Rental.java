@@ -10,12 +10,23 @@ public class Rental {
 		this.daysRented = daysRented;
 	}
 
-	public Movie getMovie() {
-		return movie;
-	}
+    public double fee() {
+        double thisAmount = 0;
+        thisAmount = movie.price(daysRented);
+        return thisAmount;
+    }
 
-	public int getDaysRented() {
-		return daysRented;
-	}
+    @Override
+    public String toString() {
+        return "\t" + movie + "\t" + String.valueOf(fee()) + "\n";
+    }
 
+    public Integer renterPoint() {
+        Integer frequentRenterPoints = 1;
+        if (movie.getPriceCode() == Movie.NEW_RELEASE
+                && daysRented > 1) {
+            frequentRenterPoints++;
+        }
+        return frequentRenterPoints;
+    }
 }

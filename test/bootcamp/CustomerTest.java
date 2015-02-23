@@ -2,6 +2,7 @@ package bootcamp;
 
 import static org.junit.Assert.assertEquals;
 
+import bootcamp.Presenter.PaperPresenter;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,8 +23,8 @@ public class CustomerTest {
 		customer = new Customer("nhpatt");
 	}
 
-	@Test
-	public void testStatementOneRegular() {
+    @Test
+	public void testPaperStatementOneRegular() {
 		addRentalOfMovie(regular, TWO_DAYS);
 
 		final StringBuffer expectedStatement = new StringBuffer();
@@ -31,11 +32,11 @@ public class CustomerTest {
 		expectedStatement.append("\tA New Hope\t2.0\n");
 		expectedStatement.append("Amount owed is 2.0\n");
 		expectedStatement.append("You earned 1 frequent renter points");
-		assertEquals(expectedStatement.toString(), customer.statement());
+		assertEquals(expectedStatement.toString(), customer.statement(new PaperPresenter()));
     }
 
 	@Test
-	public void testStatementOneRegularMoreThanTwoDays() {
+	public void testPaperStatementOneRegularMoreThanTwoDays() {
 		addRentalOfMovie(regular, THREE_DAYS);
 
 		final StringBuffer expectedStatement = new StringBuffer();
@@ -43,11 +44,11 @@ public class CustomerTest {
 		expectedStatement.append("\tA New Hope\t3.5\n");
 		expectedStatement.append("Amount owed is 3.5\n");
 		expectedStatement.append("You earned 1 frequent renter points");
-		assertEquals(expectedStatement.toString(), customer.statement());
+		assertEquals(expectedStatement.toString(), customer.statement(new PaperPresenter()));
 	}
 
 	@Test
-	public void testStatementOneForChildren() {
+	public void testPaperStatementOneForChildren() {
 		addRentalOfMovie(children, TWO_DAYS);
 
 		final StringBuffer expectedStatement = new StringBuffer();
@@ -55,11 +56,11 @@ public class CustomerTest {
 		expectedStatement.append("\tA Phantom Menace\t1.5\n");
 		expectedStatement.append("Amount owed is 1.5\n");
 		expectedStatement.append("You earned 1 frequent renter points");
-		assertEquals(expectedStatement.toString(), customer.statement());
+		assertEquals(expectedStatement.toString(), customer.statement(new PaperPresenter()));
 	}
 
 	@Test
-	public void testStatementOneForChildrenMoreThanThreeDays() {
+	public void testPaperStatementOneForChildrenMoreThanThreeDays() {
 		addRentalOfMovie(children, FOUR_DAYS);
 
 		final StringBuffer expectedStatement = new StringBuffer();
@@ -67,11 +68,11 @@ public class CustomerTest {
 		expectedStatement.append("\tA Phantom Menace\t3.0\n");
 		expectedStatement.append("Amount owed is 3.0\n");
 		expectedStatement.append("You earned 1 frequent renter points");
-		assertEquals(expectedStatement.toString(), customer.statement());
+		assertEquals(expectedStatement.toString(), customer.statement(new PaperPresenter()));
 	}
 
     @Test
-    public void testStatementForMovieInStateOneNewReleaseChangesItsStateToRegularState() throws Exception {
+    public void testPaperStatementForMovieInStateOneNewReleaseChangesItsStateToRegularState() throws Exception {
         Movie newReleaseMovie = Movie.createNewReleaseMovie("Birdman");
         addRentalOfMovie(newReleaseMovie, TWO_DAYS);
 
@@ -80,7 +81,7 @@ public class CustomerTest {
         expectedStatementForNewRelease.append("\tBirdman\t6.0\n");
         expectedStatementForNewRelease.append("Amount owed is 6.0\n");
         expectedStatementForNewRelease.append("You earned 2 frequent renter points");
-        assertEquals(expectedStatementForNewRelease.toString(), customer.statement());
+        assertEquals(expectedStatementForNewRelease.toString(), customer.statement(new PaperPresenter()));
 
         newReleaseMovie.changeStateToRegularMovie();
         final StringBuffer expectedStatementForRegularState = new StringBuffer();
@@ -88,11 +89,11 @@ public class CustomerTest {
         expectedStatementForRegularState.append("\tBirdman\t2.0\n");
         expectedStatementForRegularState.append("Amount owed is 2.0\n");
         expectedStatementForRegularState.append("You earned 1 frequent renter points");
-        assertEquals(expectedStatementForRegularState.toString(), customer.statement());
+        assertEquals(expectedStatementForRegularState.toString(), customer.statement(new PaperPresenter()));
     }
 
     @Test
-	public void testStatementOneRentalNewRelease() {
+	public void testPaperStatementOneRentalNewRelease() {
 		addRentalOfMovie(newRelease, TWO_DAYS);
 
 		final StringBuffer expectedStatementForNewRelease = new StringBuffer();
@@ -100,18 +101,18 @@ public class CustomerTest {
 		expectedStatementForNewRelease.append("\tRevenge of the Sith\t6.0\n");
 		expectedStatementForNewRelease.append("Amount owed is 6.0\n");
 		expectedStatementForNewRelease.append("You earned 2 frequent renter points");
-		assertEquals(expectedStatementForNewRelease.toString(), customer.statement());
+		assertEquals(expectedStatementForNewRelease.toString(), customer.statement(new PaperPresenter()));
 	}
 
 	@Test
-	public void testStatementNoRentals() {
+	public void testPaperStatementNoRentals() {
 		assertEquals(
 				"Rental Record for nhpatt\nAmount owed is 0.0\nYou earned 0 frequent renter points",
-				customer.statement());
+				customer.statement(new PaperPresenter()));
 	}
 
 	@Test
-	public void testStatementFourRentals() {
+	public void testPaperStatementFourRentals() {
 		addRentalOfMovie(regular, TWO_DAYS);
 		addRentalOfMovie(newRelease, TWO_DAYS);
 		addRentalOfMovie(children, THREE_DAYS);
@@ -125,7 +126,7 @@ public class CustomerTest {
 		expectedStatement.append("\tA New Hope\t2.0\n");
 		expectedStatement.append("Amount owed is 11.5\n");
 		expectedStatement.append("You earned 5 frequent renter points");
-		assertEquals(expectedStatement.toString(), customer.statement());
+		assertEquals(expectedStatement.toString(), customer.statement(new PaperPresenter()));
 	}
 
 	private void addRentalOfMovie(final Movie movie, final int daysRented) {

@@ -1,5 +1,6 @@
 package bootcamp.Presenter;
 
+import bootcamp.CustomerInfo;
 import bootcamp.CustomerTest;
 import bootcamp.Movie;
 import bootcamp.Rental;
@@ -22,8 +23,9 @@ public class HtmlPresenterTest {
         rentals.add(new Rental(Movie.createChildrenMovie("Train your Dragon"), DAYS_RENTED));
         rentals.add(new Rental(Movie.createNewReleaseMovie("BirdMan"), DAYS_RENTED));
         String customerName = "Dhanesh";
+        CustomerInfo customerInfo = new CustomerInfo(customerName, rentals, 7.5, 3);
 
-        String htmlStatement = htmlPresenter.getStatement(customerName,rentals);
+        String htmlStatement = htmlPresenter.getStatement(customerInfo);
 
         final StringBuffer expectedHtmlStatement = new StringBuffer();
         expectedHtmlStatement.append("<html><body>");

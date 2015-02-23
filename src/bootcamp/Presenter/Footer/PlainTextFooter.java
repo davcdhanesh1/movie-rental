@@ -7,10 +7,11 @@ import java.util.List;
 
 public class PlainTextFooter extends StatementFooter {
     @Override
-    public String get(List<Rental> rentals) {
+    public String get(double totalAmount, Integer totalFrequentRenterPoints) {
         String footer = new String();
-        footer += "Amount owed is " + totalAmount(rentals) + "\n";
-        footer += "You earned " + totalFrequentRenterPoints(rentals) + " frequent renter points";
+        footer += "Amount owed is " + totalAmount + "\n";
+        footer += "You earned " + totalFrequentRenterPoints + " frequent renter points";
         return footer;
     }
+
 }

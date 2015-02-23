@@ -19,6 +19,23 @@ public class Customer {
 	}
 
 	public String createStatement(Presenter presenter) {
-        return presenter.getStatement(name, rentals);
+        CustomerInfo customerInfo = new CustomerInfo(name, rentals, totalAmount(), totalFrequentRenterPoints());
+        return presenter.getStatement(customerInfo);
+    }
+
+    private Integer totalFrequentRenterPoints() {
+        int frequentRenterPoints = 0;
+        for (final Rental rental: rentals) {
+            frequentRenterPoints += rental.renterPoint();
+        }
+        return frequentRenterPoints;
+    }
+
+    private double totalAmount() {
+        double totalAmount = 0;
+        for (final Rental rental: rentals) {
+            totalAmount += rental.fee();
+        }
+        return totalAmount;
     }
 }

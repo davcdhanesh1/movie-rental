@@ -1,5 +1,6 @@
 package bootcamp.Presenter;
 
+import bootcamp.CustomerInfo;
 import bootcamp.Presenter.Body.PlainTextBody;
 import bootcamp.Presenter.Body.StatementBody;
 import bootcamp.Presenter.Footer.PlainTextFooter;
@@ -17,11 +18,11 @@ public class PlainTextPresenter extends Presenter {
     private StatementFooter plainTextFooter = new PlainTextFooter();
 
     @Override
-    public String getStatement(String name, List<Rental> rentals) {
+    public String getStatement(CustomerInfo customerInfo) {
         String result = new String();
-        result += plainTextHeader.get(name);
-        result += plainTextBody.get(rentals);
-        result += plainTextFooter.get(rentals);
+        result += plainTextHeader.get(customerInfo.name);
+        result += plainTextBody.get(customerInfo.rentals);
+        result += plainTextFooter.get(customerInfo.totalAmount, customerInfo.totalFrequentRenterPoints);
         return result;
     }
 }

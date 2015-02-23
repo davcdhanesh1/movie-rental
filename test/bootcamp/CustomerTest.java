@@ -71,7 +71,7 @@ public class CustomerTest {
 	}
 
     @Test
-    public void testStatementOneRentalNewReleaseChangesItsStateToRegularState() throws Exception {
+    public void testStatementForMovieInStateOneNewReleaseChangesItsStateToRegularState() throws Exception {
         Movie newReleaseMovie = Movie.createNewReleaseMovie("Birdman");
         addRentalOfMovie(newReleaseMovie, TWO_DAYS);
 

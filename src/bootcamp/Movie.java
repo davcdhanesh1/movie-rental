@@ -7,18 +7,42 @@ public class Movie {
     }
 
     private final String title;
-    private MovieType movieType;
+    private MovieState movieState;
 
-	public Movie(final String title, final MovieType movieType) {
+	private Movie(final String title, final MovieState movieState) {
 		this.title = title;
-        this.movieType = movieType;
+        this.movieState = movieState;
     }
 
     public double price(Integer daysRented) {
-        return movieType.price(daysRented);
+        return movieState.price(daysRented);
     }
 
     public Integer renterPoint(int daysRented) {
-        return movieType.renterPoint(daysRented);
+        return currentState().renterPoint(daysRented);
+    }
+
+    private MovieState currentState() {
+        return movieState;
+    }
+
+    public void setState(MovieState state) {
+        this.movieState = state;
+    }
+
+    public static Movie createNewReleaseMovie(String movieName) {
+        return new Movie(movieName,new NewReleaseMovieState());
+    }
+
+    public void changeStateToRegularMovie() {
+        movieState = new RegularMovieState();
+    }
+
+    public static Movie createRegularRelease(String movieName) {
+        return new Movie(movieName, new RegularMovieState());
+    }
+
+    public static Movie createChildrenMovie(String movieName) {
+        return new Movie(movieName, new ChildrenMovieState());
     }
 }

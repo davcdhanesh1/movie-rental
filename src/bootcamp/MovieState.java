@@ -1,6 +1,6 @@
 package bootcamp;
 
-public interface MovieType {
+public interface MovieState {
     double price(Integer daysRented);
 
     Integer renterPoint(int daysRented);

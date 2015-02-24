@@ -4,17 +4,13 @@
         <delete dir="out"/>
     </target>
 
-    <path id="src.path">
-        <pathelement path="out/production/"/>
-    </path>
-
-    <path id="classpath">
-        <path refid="src.path"/>
+    <path id="lib.path">
         <fileset dir="../lib" includes="*.jar"/>
     </path>
 
     <path id="test.path">
-        <path refid="classpath" />
+        <path refid="lib.path" />
+        <pathelement path="out/production/"/>
         <pathelement path="out/test/"/>
     </path>
 

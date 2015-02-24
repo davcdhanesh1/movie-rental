@@ -1,6 +1,6 @@
 <project>
     <target name="clean">
-        <delete dir="bulid"/>
+        <delete dir="build"/>
         <delete dir="out"/>
     </target>
 
@@ -14,8 +14,7 @@
         <pathelement path="out/test/"/>
     </path>
 
-
-    <target name="compile">
+    <target name="compile" depends="clean">
         <mkdir dir="out/production"/>
         <mkdir dir="out/test"/>
         <javac srcdir="src" destdir="out/production"/>
@@ -26,7 +25,28 @@
 
     <target name="jar">
         <mkdir dir="build/jar"/>
-        <jar destfile="build/jar`.jar" basedir="out/production"></jar>
+        <jar destfile="build/jar.jar" basedir="out/production"></jar>
+    </target>
+
+    <target name="test" depends="compile">
+        <mkdir dir="build/report/"></mkdir>
+        <junit printsummary="yes" haltonfailure="no">
+
+            <classpath refid="test.path"></classpath>
+
+            <batchtest todir="build/tests">
+                <fileset dir="out/test">
+                    <include name="**/*.class"/>
+                </fileset>
+            </batchtest>
+
+        </junit>
+        <junitreport todir="build/report">
+            <fileset dir="build/report">
+                <include name="*.xml" />
+            </fileset>
+            <report todir="build/report/html"></report>
+        </junitreport>
     </target>
 
 </project>

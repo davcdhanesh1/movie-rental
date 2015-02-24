@@ -1,0 +1,36 @@
+<project>
+    <target name="clean">
+        <delete dir="bulid"/>
+        <delete dir="out"/>
+    </target>
+
+    <path id="src.path">
+        <pathelement path="out/production/"/>
+    </path>
+
+    <path id="classpath">
+        <path refid="src.path"/>
+        <fileset dir="../lib" includes="*.jar"/>
+    </path>
+
+    <path id="test.path">
+        <path refid="classpath" />
+        <pathelement path="out/test/"/>
+    </path>
+
+
+    <target name="compile">
+        <mkdir dir="out/production"/>
+        <mkdir dir="out/test"/>
+        <javac srcdir="src" destdir="out/production"/>
+        <javac srcdir="test" destdir="out/test">
+            <classpath refid="test.path"/>
+        </javac>
+    </target>
+
+    <target name="jar">
+        <mkdir dir="build/jar"/>
+        <jar destfile="build/jar`.jar" basedir="out/production"></jar>
+    </target>
+
+</project>
